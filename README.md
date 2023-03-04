@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
-## Redux Structure
+## Redux Overview
 
 ### Actions 
 A plain ol' JavaScript object with a `type` field. It can have other fields too.
@@ -34,5 +34,27 @@ If something happens in the app:
   * The store runs its reducers and state changes based on the action
   * The store tells the UI the state has changed 
   * The UI rerenders to reflect any changes in state.
+
+## Redux App Structure
+
+# Creating the Redux Store
+
+In `app/store.js` we have: 
+
+```
+import { configureStore } from '@reduxjs/toolkit';
+import counterReducer from '../features/counter/counterSlice';
+
+export const store = configureStore({
+  reducer: {
+    counter: counterReducer,
+  },
+});
+```
+
+`configureStore` is used to create the Redux store. It requires a reducer as an argument. 
+In the above code,
+
+
   
  
