@@ -37,7 +37,7 @@ If something happens in the app:
 
 ## Redux App Structure
 
-# Creating the Redux Store
+### Creating the Redux Store
 
 In `app/store.js` we have: 
 
@@ -55,7 +55,7 @@ export const store = configureStore({
 `configureStore` is used to create the Redux store. It requires a reducer as an argument. 
 In the above code, we're creating a store with a **reducer slice** called **counterReducer**. This counterReducer will handle all the stuff related to the counter state.
 
-# Creating Slice Reducers and Actions
+### Creating Slice Reducers and Actions
 
 
   
@@ -73,12 +73,12 @@ The cool thing that happens here is that actions are generated based off the `na
 So for each of the reducers we define in the slice, an action with `{type: "<name>/<reducer_name>"}` is made for us. 
 No need to define actions.
 
-# Reducers and Immutable Updates 
+### Reducers and Immutable Updates 
 
 So we said before that we can only make immutable updates within reducers. `createSlice` uses a library called Immer that makes writing immutable updates so much easier. 
 However it's important to remember that Immer is only used within the Redux Toolkit's `createSlice` and `createReducer` functions. 
 
-# Writing Async Logic with Thunks
+### Writing Async Logic with Thunks
 
 A **thunk** is a Redux function that can contain asynchronous logic. Thunks are made using two functions:
   * An inside thunk function, which takes `dispatch` and `getState` as arguments
@@ -101,7 +101,7 @@ const fetchUserById = userId => {
 }
 ```
 
-# The React Counter Component
+### The React Counter Component
 Looking at the code we can see that the code works very much the same as a normal React component. 
 
 ``` 
@@ -133,14 +133,14 @@ export const selectCount = (state) => state.counter.value;
 
 Anytime an action is dispatched and the Redux store updates state, `useSelector` will re-run the selector function. If the value is different, then `useSelector` prompts a rerender of the component.
 
-# Component State and Forms
+### Component State and Forms
 
 It's not necessary to keep an entire components state in the Redux store. Only stuff that the entire app will use should really go in the store.
 
 In the case of forms, it's not necessary to actively update the store as the user edits. The better option is to keep it in component state and when the user is finished, dispatching the complete edit to store.
 
 
-# Providing the Store #
+### Providing the Store
 
 So `useSelector` and `useDispatch` hooks talk to the store, but how?
 If we look at the starting point, index.js it's quite straight forward.
